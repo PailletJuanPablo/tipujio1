@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar color="verde">
+        <ion-title>Crear Red: {{netService.selectedNet.name}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only color="dark" (click)="saveNet()">
+                <ion-icon name="checkmark-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+       <ion-label color="verde" stacked>Ingrese nombre</ion-label>
+
+         <ion-input color="verde" type="text" [(ngModel)]="netService.selectedNet.name" placeholder="Ej: Familia"></ion-input>
+     </ion-item>
+
+
+</ion-list>
+
+    <ion-list no-lines>
+        <h4 color="verde">Contactos que pertenecen a esta red</h4>
+        <button ion-button (click)="displayAddContactsModal()" color="verde" round full>
+            Agregar contactos
+        </button>
+        <div *ngFor="let contact of netService.selectedNet.contacts">
+            <ion-item-sliding *ngIf="contact.selected">
+                <ion-item>{{contact.displayName}}</ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="removeContact(contact)">
+                        <ion-icon name="trash"></ion-icon>
+                        Eliminar
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
+    </ion-list>
+</ion-content>
+<ion-footer>
+  <button color="dark" full ion-button (click)="saveNet()">Guardar</button>
+
+</ion-footer>

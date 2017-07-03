@@ -1,0 +1,41 @@
+page-inicio {
+  body{
+  background-color: #ED5A5A!important;}
+
+    .title-page {
+        margin-bottom: 20px;
+    }
+    .notificar-container {
+        padding: 0 10% 3%;
+        .notificar-img {
+            img {
+                width: 40%;
+            }
+        }
+    }
+    .llamar-container {
+        padding: 0 10% 3%;
+        .llamar-img {
+            img {
+            //    width: 90px;
+            //    height: 80px;
+            }
+        }
+    }
+    .title {
+        font-size: 20px;
+        margin-top: 15px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    .options-container {
+        i {
+            font-size: 23px;
+        }
+
+
+    }
+    .text-center{
+  text-align: center!important;
+}
+}

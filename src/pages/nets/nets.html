@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="verde">
+    <ion-title>Redes de emergencia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 padding-horizontal>Administra tus redes de seguridad.</h2>
+  <p padding-horizontal>Posteriormente, podrás enviar una alerta a la red creada</p>
+  <ion-list>
+      <button ion-button (click)="displayEditNetPopover(netService.createNewSafetyNet())" color="verde" round full>
+          Añadir una nueva red de emergencia
+      </button>
+<br>
+<br>
+      <div *ngIf="netService.savedNets > 1">
+        <h3 color="verde"> Mis redes de seguridad: </h3>
+      </div>
+      <div *ngFor="let net of netService.savedNets">
+          <ion-item-sliding>
+              <ion-item  (click)="displayEditNetPopover(net)">{{net.name}}</ion-item>
+              <ion-item-options side="right">
+                  <button ion-button color="danger" (click)="netService.deleteNet(net)">
+                      <ion-icon name="trash"></ion-icon>
+                      Eliminar
+                  </button>
+              </ion-item-options>
+              <ion-item-options side="left">
+                  <button ion-button color="primary" (click)="displayEditNetPopover(net)">
+                      <ion-icon name="open"></ion-icon>
+                      Editar
+                  </button>
+              </ion-item-options>
+          </ion-item-sliding>
+
+      </div>
+  </ion-list>
+</ion-content>

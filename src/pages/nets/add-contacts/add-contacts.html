@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="verde">
+        <ion-buttons end>
+            <button ion-button icon-only color="dark" (click)="close()">
+                <ion-icon name="checkmark-circle"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Añadir contactos</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <p>
+Seleccione los contactos que pertenecerán a su lista.
+    </p>
+    <ion-list>
+        <ion-list-header>Contactos</ion-list-header>
+        <div *ngFor="let contact of contactService.workingContacts; let i = index">
+            <ion-item (click)="displayPhoneNumbers[i] = !displayPhoneNumbers[i]" *ngIf="displayContacts[i]">
+                {{contact.displayName}}
+                <ion-icon icon-right [name]="displayPhoneNumbers[i] ? 'arrow-dropup' : 'arrow-dropdown'"></ion-icon>
+            </ion-item>
+            <ion-list *ngIf="displayPhoneNumbers[i]" no-lines no-margin>
+                <ion-item *ngFor="let number of contact.phoneNumbers">
+                    <ion-label>{{number.type}}: {{number.value}}</ion-label>
+                    <ion-toggle [(ngModel)]="number.selected"></ion-toggle>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-list>
+</ion-content>
+<ion-footer>
+  <button color="dark" full ion-button (click)="close()">Guardar</button>
+
+</ion-footer>

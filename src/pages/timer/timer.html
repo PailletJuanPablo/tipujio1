@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar color="emergencias">
+    <ion-title>
+      Enviar Alerta
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color:#ED5A5A">
+
+    <div class="activeTimer" *ngIf="timerService.timerActive && !timerService.denunciarealizada ">
+  <!---        <h2>{{timerService.countdownHours}} : {{timerService.countdownMinutes}} : {{timerService.countdownSeconds}}</h2>
+        <button ion-button full color="danger" (click)="timerService.cancelTimer()">Cancel Timer</button>-->
+        <h1 class="text-center" style="color:white">      {{timerService.denunciastring}}</h1>
+
+    </div>
+    <div class="activeTimer" *ngIf="timerService.denunciarealizada ">
+<h1 class="text-center" style="color:white"> {{timerService.denunciastring}}</h1>
+<br>
+<div class="text-center">
+<img src="assets/images/contactos.png">
+</div>
+<button ion-button color="white" navPop full > Volver al Inicio </button>
+        </div>
+    <div *ngIf="!timerService.timerActive && !timerService.denunciarealizada ">
+      <div class="text-center" style="margin-top:10%">
+      <img src="assets/images/enviaralerta.png">
+    </div>
+    <h1 class="text-center" style="color:white">
+    Enviar una alerta
+    </h1>
+    <h3 class="text-center" style="color:white">
+    Seleccione una red
+    </h3>
+        <ion-item>
+            <ion-label>Red donde se enviará</ion-label>
+            <ion-select [(ngModel)]="selectedNetId">
+                <div *ngFor="let net of netService.savedNets">
+                    <ion-option [value]="net.id">{{net.name}}</ion-option>
+                </div>
+            </ion-select>
+        </ion-item>
+      <!---     <ion-item>
+            <ion-label>Mensaje</ion-label>
+            <ion-select [(ngModel)]="selectedMessageId">
+                <div *ngFor="let message of messagesService.customMessages">
+                    <ion-option [value]="message.id">{{message.title}}</ion-option>
+                </div>
+            </ion-select>
+        </ion-item>
+     <ion-item>
+            <ion-label>Timer</ion-label>
+            <ion-select [(ngModel)]="hourSelection">
+                <ion-label>Hours</ion-label>
+                <div *ngFor="let hour of hourOptions; let i = index;">
+                    <ion-option>{{i}} hours</ion-option>
+                </div>
+            </ion-select>
+            <ion-select [(ngModel)]="minuteSelection">
+                <div *ngFor="let minute of minuteOptions; let j = index;">
+                    <ion-option>{{j}} minutes</ion-option>
+                </div>
+            </ion-select>
+        </ion-item> -->
+        <button ion-button full color="white"(click)="updateSelectionsAndStartTimer()">Enviar Alerta</button>
+    </div>
+</ion-content>
