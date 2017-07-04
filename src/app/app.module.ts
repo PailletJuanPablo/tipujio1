@@ -1,5 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { Platform } from 'ionic-angular';
+
 // Ionic Imports
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
@@ -35,6 +37,7 @@ import {CargandoPage} from '../pages/cargando/cargando';
 
 import {InicialPage} from '../pages/inicial/inicial';
 import {TerminosPage} from '../pages/terminos/terminos';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 
 @NgModule({
@@ -50,7 +53,7 @@ import {TerminosPage} from '../pages/terminos/terminos';
     InicioPage,
     CargandoPage,
     InicialPage,
-    TerminosPage
+    TerminosPage,
     // PermissionCheckPopover
   ],
   imports: [
@@ -85,11 +88,12 @@ import {TerminosPage} from '../pages/terminos/terminos';
     LocationService,
     Contacts,
     BackgroundMode,
+   Diagnostic,
     SMS,
     Geolocation,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

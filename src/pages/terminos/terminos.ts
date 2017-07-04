@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {TerminosexpPage} from '../terminosexp/terminosexp';
 import {Platform} from 'ionic-angular';
 import {InicioPage} from '../inicio/inicio';
+import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the TerminosPage page.
  *
@@ -16,7 +18,7 @@ import {InicioPage} from '../inicio/inicio';
 })
 export class TerminosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public platform: Platform, public storage:Storage) {
   }
 
   ionViewDidLoad() {
@@ -35,6 +37,8 @@ salir(){
 
 
 iraemergencias(){
+    this.storage.set('intro-done', false);
   this.navCtrl.setRoot(InicioPage, {}, {animate:true})
+
 }
 }
